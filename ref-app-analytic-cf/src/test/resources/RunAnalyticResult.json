@@ -1,0 +1,159 @@
+{
+	"outputPort": 
+	[
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_THRESHOLDLEVEL",
+				"name": "ALARM_THRESHOLDLEVEL"
+			},
+
+			"data": 
+			{
+				"@type": "OsaData",
+				"dataEvent": 
+				{
+					"@type": "DAString",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": "ALARM_LO"
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_THRESHOLDDIFF",
+				"name": "ALARM_THRESHOLDDIFF"
+			},
+
+			"data": 
+			{
+				"@type": "OsaData",
+				"dataEvent": 
+				{
+					"@type": "DMReal",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": 0.016089456241577094
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_STATUS",
+				"name": "ALARM_STATUS"
+			},
+
+			"data": 
+			{
+				"@type": "OsaData",
+				"dataEvent": 
+				{
+					"@type": "DMBool",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": false
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_LEVEL_VALUE",
+				"name": "ALARM_LEVEL_VALUE"
+			},
+
+			"data": 
+			{
+				"@type": "OsaData",
+				"dataEvent": 
+				{
+					"@type": "DMReal",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": 0.37005749355627315
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_LEVEL",
+				"name": "ALARM_LEVEL"
+			},
+
+			"data": 
+			{
+				"@type": "OsaData",
+				"dataEvent": 
+				{
+					"@type": "DAString",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": "NORMAL"
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_LEVEL_VALUE_TIME",
+				"name": "ALARM_LEVEL_VALUE_TIME"
+			},
+
+			"data": 
+			{
+				"@type": "OsaData",
+				"dataEvent": 
+				{
+					"@type": "DMReal",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": 1.0
+				}
+			}
+		}
+	],
+
+	"errorEvent": 
+	[
+		
+	]
+}

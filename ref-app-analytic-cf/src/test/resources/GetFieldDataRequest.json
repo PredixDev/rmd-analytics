@@ -1,0 +1,144 @@
+{
+	"solutionIdentifier": 
+	{
+		"@type": "SolutionIdentifier",
+		"id": 1001
+	},
+
+	"fieldDataCriteria": 
+	[
+		{
+			"fieldSelection": 
+			[
+				{
+					"fieldIdentifier": 
+					{
+						"@type": "FieldIdentifier",
+						"id": "/asset/assetMeter/crank-frame-dischargepressure/outputMaximum",
+						"name": "/asset/assetMeter/crank-frame-dischargepressure/outputMaximum",
+						"source": "PREDIX_ASSET"
+					},
+
+					"expectedDataType": "DMReal",
+					"resultId": "ALARM_HI"
+				}
+			],
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			},
+
+			"resultId": "ALARM_HI"
+		},
+
+		{
+			"fieldSelection": 
+			[
+				{
+					"fieldIdentifier": 
+					{
+						"@type": "FieldIdentifier",
+						"id": "/asset/assetMeter/crank-frame-dischargepressure/outputMinimum",
+						"name": "/asset/assetMeter/crank-frame-dischargepressure/outputMinimum",
+						"source": "PREDIX_ASSET"
+					},
+
+					"expectedDataType": "DMReal",
+					"resultId": "ALARM_LO"
+				}
+			],
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			},
+
+			"resultId": "ALARM_LO"
+		},
+
+		{
+			"fieldSelection": 
+			[
+				{
+					"fieldIdentifier": 
+					{
+						"@type": "FieldIdentifier",
+						"id": "/asset/assetMeter/crank-frame-dischargepressure",
+						"name": "/asset/assetMeter/crank-frame-dischargepressure",
+						"source": "PREDIX_TIMESERIES"
+					},
+
+					"expectedDataType": "DMDataSeq",
+					"resultId": "TS_DATA"
+				}
+			],
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_TIMESERIES"
+						},
+
+						"value": "/asset/compressor-2015"
+					},
+
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "startTime"
+						},
+
+						"value": "2015-08-01 11:00:00"
+					},
+
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "endTime"
+						},
+
+						"value": "2015-08-08 23:00:00"
+					}
+				]
+			},
+
+			"resultId": "TS_DATA"
+		}
+	]
+}

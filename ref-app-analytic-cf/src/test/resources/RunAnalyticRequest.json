@@ -1,0 +1,396 @@
+{
+	"solutionIdentifier": 
+	{
+		"@type": "SolutionIdentifier",
+		"id": 1001
+	},
+
+	"inputPort": 
+	[
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_HI",
+				"name": "ALARM_HI"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure/outputMaximum",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure/outputMaximum",
+					"source": "PREDIX_ASSET"
+				},
+
+				"expectedDataType": "DMReal",
+				"resultId": "ALARM_HI"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_LO",
+				"name": "ALARM_LO"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure/outputMinimum",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure/outputMinimum",
+					"source": "PREDIX_ASSET"
+				},
+
+				"expectedDataType": "DMReal",
+				"resultId": "ALARM_LO"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "TS_DATA",
+				"name": "TS_DATA"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure",
+					"source": "PREDIX_TIMESERIES"
+				},
+
+				"expectedDataType": "DMDataSeq",
+				"resultId": "TS_DATA"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_TIMESERIES"
+						},
+
+						"value": "/asset/compressor-2015"
+					},
+
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "startTime"
+						},
+
+						"value": "2015-08-01 11:00:00"
+					},
+
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "endTime"
+						},
+
+						"value": "2015-08-08 23:00:00"
+					}
+				]
+			}
+		}
+	],
+
+	"outputPort": 
+	[
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_STATUS",
+				"name": "ALARM_STATUS"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/alertStatus/value",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/alertStatus/value",
+					"source": "PREDIX_ASSET"
+				},
+
+				"resultId": "ALARM_STATUS"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_LEVEL",
+				"name": "ALARM_LEVEL"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/alertLevel/value",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/alertLevel/value",
+					"source": "PREDIX_ASSET"
+				},
+
+				"resultId": "ALARM_LEVEL"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_LEVEL_VALUE",
+				"name": "ALARM_LEVEL_VALUE"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/alertLevelValue/value",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/alertLevelValue/value",
+					"source": "PREDIX_ASSET"
+				},
+
+				"resultId": "ALARM_LEVEL_VALUE"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_LEVEL_VALUE_TIME",
+				"name": "ALARM_LEVEL_VALUE_TIME"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/alertTime/value",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/alertTime/value",
+					"source": "PREDIX_ASSET"
+				},
+
+				"resultId": "ALARM_LEVEL_VALUE_TIME"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_THRESHOLDDIFF",
+				"name": "ALARM_THRESHOLDDIFF"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/deltaThreshold/value",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/deltaThreshold/value",
+					"source": "PREDIX_ASSET"
+				},
+
+				"resultId": "ALARM_THRESHOLDDIFF"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"@type": "PortIdentifier",
+				"id": "ALARM_THRESHOLDLEVEL",
+				"name": "ALARM_THRESHOLDLEVEL"
+			},
+
+			"fieldSelection": 
+			{
+				"fieldIdentifier": 
+				{
+					"@type": "FieldIdentifier",
+					"id": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/deltaThresholdLevel/value",
+					"name": "/asset/assetMeter/crank-frame-dischargepressure/meterDatasource/meterExtensions/attributes/deltaThresholdLevel/value",
+					"source": "PREDIX_ASSET"
+				},
+
+				"resultId": "ALARM_THRESHOLDLEVEL"
+			},
+
+			"selectionFilter": 
+			{
+				"@type": "FieldSelectionFilter",
+				"fieldIdentifierValue": 
+				[
+					{
+						"fieldIdentifier": 
+						{
+							"@type": "FieldIdentifier",
+							"id": "/asset/assetId",
+							"source": "PREDIX_ASSET"
+						},
+
+						"value": "/asset/compressor-2015"
+					}
+				]
+			}
+		}
+	]
+}

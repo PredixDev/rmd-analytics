@@ -1,0 +1,10 @@
+---
+applications:
+  - name: integration-rmd-analytics
+    buildpack: java_buildpack
+    path: target/ref-app-analytic-cf-1.0.0-SNAPSHOT.jar
+env:
+    SPRING_PROFILES_ACTIVE : cloud,cloudintegration
+    predix_oauthRestHost : 35492c1e-657c-4377-ac51-add963552460.predix-uaa-sysint.grc-apps.svc.ice.ge.com
+    predix_oauthClientId : rmd-unittest:secret
+    predix_fdh_restHost : integration-rmd-fdh-router.grc-apps.svc.ice.ge.com

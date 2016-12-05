@@ -1,0 +1,18 @@
+applications:
+  - name: template-fdh-router-cf
+    buildpack: java_buildpack
+    path: target/ref-app-analytic-cf-4.0.6.jar
+    memory: 512M
+    i : 2
+    services:
+      - unittest-uaa
+env:
+    predix_uaa_name: unittest-uaa
+    predix_oauth_clientId : app_client_id:secret
+    predix_fdh_restProtocol : https
+    predix_fdh_restHost : unittest-fdh-router-cf.grc-apps.svc.ice.ge.com
+    predix_fdh_restPort : 443
+    #logging - see application-cloud.properties
+    logging_level_root: INFO
+    logging_level_org_springframework: INFO
+    logging_level_com_ge_predix_solsvc: DEBUG

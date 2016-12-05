@@ -1,0 +1,25 @@
+{
+	"fieldDataCriteria": [{
+		"namespaces": [],
+		"fieldSelection": [{
+			"fieldIdentifier": {
+				"complexType": "FieldIdentifier",
+				"id": "/asset/assetTag/crank-frame-dischargepressure",
+				"source": "PREDIX_TIMESERIES"
+			},
+			"expectedDataType": "DMDataSeq"
+		}],
+		"filter": {
+			"complexType": "TimeseriesFilter",
+			"datapointsQuery": {
+				"start": "5d-ago",
+				"tags": [{
+					"name": "Compressor-2015:DischargePressure",
+					"limit": 0,
+					"aggregations": [],
+					"groups": []
+				}]
+			}
+		}
+	}]
+}

@@ -1,0 +1,159 @@
+{
+	"outputPort": 
+	[
+		{
+			"portIdentifier": 
+			{
+				"complexType": "PortIdentifier",
+				"id": "ALARM_THRESHOLDLEVEL",
+				"name": "ALARM_THRESHOLDLEVEL"
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DAString",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": "ALARM_LO"
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"complexType": "PortIdentifier",
+				"id": "ALARM_THRESHOLDDIFF",
+				"name": "ALARM_THRESHOLDDIFF"
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DMReal",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": 0.016089456241577094
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"complexType": "PortIdentifier",
+				"id": "ALARM_STATUS",
+				"name": "ALARM_STATUS"
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DMBool",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": false
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"complexType": "PortIdentifier",
+				"id": "ALARM_LEVEL_VALUE",
+				"name": "ALARM_LEVEL_VALUE"
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DMReal",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": 0.37005749355627315
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"complexType": "PortIdentifier",
+				"id": "ALARM_LEVEL",
+				"name": "ALARM_LEVEL"
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DAString",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": "NORMAL"
+				}
+			}
+		},
+
+		{
+			"portIdentifier": 
+			{
+				"complexType": "PortIdentifier",
+				"id": "ALARM_LEVEL_VALUE_TIME",
+				"name": "ALARM_LEVEL_VALUE_TIME"
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DMReal",
+					"id": 0,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": 1.0
+				}
+			}
+		}
+	],
+
+	"errorEvent": 
+	[
+		
+	]
+}

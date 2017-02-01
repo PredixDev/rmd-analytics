@@ -1,0 +1,40 @@
+{
+	"fieldDataCriteria": [{
+		"namespaces": [],
+		"fieldSelection": [{
+			"fieldIdentifier": {
+				"complexType": "FieldIdentifier",
+				"id": "/asset/assetTag/crank-frame-dischargepressure",
+				"source": "PREDIX_TIMESERIES"
+			},
+			"expectedDataType": "DatapointsResponse"
+		}],
+		"filter": {
+			"complexType": "AssetCriteriaAwareTimeseriesFilter",
+			"assetFieldDataCriteria": {
+				"namespaces": [],
+				"resultId": "sourceTagId",
+				"fieldSelection": [{
+					"fieldIdentifier": {
+						"complexType": "FieldIdentifier",
+						"id": "/asset/assetTag/crank-frame-dischargepressure/sourceTagId",
+						"source": "PREDIX_ASSET"
+					},
+					"expectedDataType": "DAString"
+				}],
+				"filter": {
+					"complexType": "AssetFilter",
+					"uri": "/asset/compressor-2015"
+				}
+			},
+			"timeseriesFilter": {
+				"complexType": "TimeseriesFilter",
+				"datapointsLatestQuery": {
+					"tags": [{
+						"name": "Compressor-2015:DischargePressure"
+					}]
+				}
+			}
+		}
+	}]
+}

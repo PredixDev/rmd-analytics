@@ -1,0 +1,195 @@
+{
+	"fieldData": 
+	[
+		{
+			"resultId": "ALARM_HI",
+			"field": 
+			{
+				"fieldIdentifier": 
+				{
+					"complexType": "FieldIdentifier",
+					"id": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
+					"name": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
+					"source": "PREDIX_ASSET"
+				},
+
+				"fieldType": null,
+				"parents": 
+				[
+					
+				],
+
+				"attributeDef": null
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DMReal",
+					"alertStatus": null,
+					"confid": null,
+					"id": 0,
+					"sequenceNum": null,
+					"site": null,
+					"time": 
+					{
+						"localTime": null,
+						"time": null,
+						"timeBinary": 0,
+						"timeType": "OSACBM_TIME_SYSTEM_TICK"
+					},
+
+					"dataStatus": null,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": 23.0
+				}
+			},
+
+			"engUnit": null,
+			"knownDataTypes": null
+		},
+
+		{
+			"resultId": "ALARM_LO",
+			"field": 
+			{
+				"fieldIdentifier": 
+				{
+					"complexType": "FieldIdentifier",
+					"id": "/asset/assetTag/crank-frame-dischargepressure/outputMinimum",
+					"name": "/asset/assetTag/crank-frame-dischargepressure/outputMinimum",
+					"source": "PREDIX_ASSET"
+				},
+
+				"fieldType": null,
+				"parents": 
+				[
+					
+				],
+
+				"attributeDef": null
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DMReal",
+					"alertStatus": null,
+					"confid": null,
+					"id": 0,
+					"sequenceNum": null,
+					"site": null,
+					"time": 
+					{
+						"localTime": null,
+						"time": null,
+						"timeBinary": 0,
+						"timeType": "OSACBM_TIME_SYSTEM_TICK"
+					},
+
+					"dataStatus": null,
+					"numAlerts": 
+					[
+						
+					],
+
+					"value": 0.0
+				}
+			},
+
+			"engUnit": null,
+			"knownDataTypes": null
+		},
+
+		{
+			"resultId": "TS_DATA",
+			"field": 
+			{
+				"fieldIdentifier": 
+				{
+					"complexType": "FieldIdentifier",
+					"id": "/asset/assetTag/crank-frame-dischargepressure",
+					"name": "/asset/assetTag/crank-frame-dischargepressure",
+					"source": "PREDIX_TIMESERIES"
+				},
+
+				"fieldType": null,
+				"parents": 
+				[
+					
+				],
+
+				"attributeDef": null
+			},
+
+			"data": 
+			{
+				"complexType": "OsaData",
+				"dataEvent": 
+				{
+					"complexType": "DMDataSeq",
+					"alertStatus": null,
+					"confid": null,
+					"id": 0,
+					"sequenceNum": null,
+					"site": null,
+					"time": null,
+					"dataStatus": null,
+					"numAlerts": 
+					[
+						
+					],
+
+					"values": 
+					[
+						1.438906235203E12,
+						0.37005749355627315
+					],
+
+					"valuesList": 
+					[
+						
+					],
+
+					"valuesBinary": null,
+					"xaxisDeltasList": 
+					[
+						
+					],
+
+					"xaxisDeltasBinary": null,
+					"xaxisDeltas": 
+					[
+						0.0,
+						-1.43890623520263E12
+					],
+
+					"xaxisStart": 1.438906235203E12
+				}
+			},
+
+			"engUnit": 
+			{
+				"code": null,
+				"name": "psi"
+			},
+
+			"knownDataTypes": null
+		}
+	],
+
+	"errorEvent": 
+	[
+		
+	],
+
+	"externalAttributeMap": null
+}

@@ -1,0 +1,7 @@
+.idea
+*.iml
+**/target
+.classpath
+.project
+.settings/
+ref-app-analytic-cf/.DS_Store

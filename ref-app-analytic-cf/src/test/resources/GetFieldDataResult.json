@@ -8,8 +8,8 @@
 				"fieldIdentifier": 
 				{
 					"complexType": "FieldIdentifier",
-					"id": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
-					"name": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
+					"id": "/asset/assetTag/crank-frame-dischargepressure/hiAlarmThreshold",
+					"name": "/asset/assetTag/crank-frame-dischargepressure/hiAlarmThreshold",
 					"source": "PREDIX_ASSET"
 				},
 
@@ -62,8 +62,8 @@
 				"fieldIdentifier": 
 				{
 					"complexType": "FieldIdentifier",
-					"id": "/asset/assetTag/crank-frame-dischargepressure/outputMinimum",
-					"name": "/asset/assetTag/crank-frame-dischargepressure/outputMinimum",
+					"id": "/asset/assetTag/crank-frame-dischargepressure/loAlarmThreshold",
+					"name": "/asset/assetTag/crank-frame-dischargepressure/loAlarmThreshold",
 					"source": "PREDIX_ASSET"
 				},
 

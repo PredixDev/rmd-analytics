@@ -76,7 +76,7 @@ The FieldIdentifer has an id, name, and source.  The id is a Rest principle base
 
 <img src="images/field_identifier.png">
 
-This Input port says to get the ALARM_HI from PREDIX_ASSET by looking up an Asset and looking for "crank-frame-dischargepressure" in the Map\<String,AssetTag\> for the outputMaximum attribute.  
+This Input port says to get the ALARM_HI from PREDIX_ASSET by looking up an Asset and looking for "crank-frame-dischargepressure" in the Map\<String,AssetTag\> for the hiAlarmThreshold attribute.  
 
 ```json
 {
@@ -90,7 +90,7 @@ This Input port says to get the ALARM_HI from PREDIX_ASSET by looking up an Asse
 				"fieldIdentifier": 
 				{
 					"complexType": "FieldIdentifier",
-					"id": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
+					"id": "/asset/assetTag/crank-frame-dischargepressure/hiAlarmThreshold",
 					"source": "PREDIX_ASSET"
 				},
 
@@ -110,7 +110,7 @@ The Selection Filter is a where clause which also has Animal, Cat, Dog polymorph
 
 ##Traversing the Model
 
-Field definitions represent data and are influenced by Predix Asset JSON models.  It turns out that all json structures when unmarshaled to objects are primitives, objects, maps or lists.  Say, we search for an Asset trying to retrieve the OutputMaximum attribute.  The items in-between are a traversal of the Asset object-graph json.  Predix Asset supports any 'model' json structure.  In this case the model is an Asset.  But it could be /plane/wingspan or /address/city.  
+Field definitions represent data and are influenced by Predix Asset JSON models.  It turns out that all json structures when unmarshaled to objects are primitives, objects, maps or lists.  Say, we search for an Asset trying to retrieve the hiAlarmThreshold attribute.  The items in-between are a traversal of the Asset object-graph json.  Predix Asset supports any 'model' json structure.  In this case the model is an Asset.  But it could be /plane/wingspan or /address/city.  
 
 Our implementation uses standard json libraries to find the attribute within the model.  We use Jackson since it handles polymorphic objects better than Gson.  We also do not have to register mappers for each object type we create.  This should increase productivity since you can concentrate on Modeling and not the plumbing of marshaling/unmarshaling Json.
 
@@ -133,8 +133,8 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/hiAlarmThreshold",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/hiAlarmThreshold",
 				"source": "PREDIX_ASSET"
 			},
 			"expectedDataType": "DMReal",
@@ -142,7 +142,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -153,8 +153,8 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/outputMinimum",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/outputMinimum",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/loAlarmThreshold",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/loAlarmThreshold",
 				"source": "PREDIX_ASSET"
 			},
 			"expectedDataType": "DMReal",
@@ -162,7 +162,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -184,25 +184,25 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 			"complexType": "AssetCriteriaAwareTimeseriesFilter",
 			"assetFieldDataCriteria": {
 				"namespaces": [],
-				"resultId": "sourceTagId",
+				"resultId": "tag",
 				"fieldSelection": [{
 					"fieldIdentifier": {
 						"complexType": "FieldIdentifier",
-						"id": "/asset/assetTag/crank-frame-dischargepressure/sourceTagId",
+						"id": "/asset/assetTag/crank-frame-dischargepressure/timeseriesDatasource/tag",
 						"source": "PREDIX_ASSET"
 					},
 					"expectedDataType": "DAString"
 				}],
 				"filter": {
 					"complexType": "AssetFilter",
-					"uri": "/asset/compressor-2015"
+					"uri": "/asset/compressor-2017"
 				}
 			},
 			"timeseriesFilter": {
 				"complexType": "TimeseriesFilter",
 				"datapointsLatestQuery": {
 					"tags": [{
-						"name": "{{sourceTagId}}"
+						"name": "{{tag}}"
 					}]
 				}
 			}
@@ -217,15 +217,15 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertStatus/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertStatus/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertStatus/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertStatus/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_STATUS"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -236,15 +236,15 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertLevel/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertLevel/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertLevel/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertLevel/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_LEVEL"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -255,15 +255,15 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertLevelValue/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertLevelValue/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertLevelValue/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertLevelValue/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_LEVEL_VALUE"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -274,15 +274,15 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertTime/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertTime/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertTime/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertTime/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_LEVEL_VALUE_TIME"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -293,15 +293,15 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/deltaThreshold/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/deltaThreshold/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/deltaThreshold/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/deltaThreshold/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_THRESHOLDDIFF"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -312,15 +312,15 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/deltaThresholdLevel/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/deltaThresholdLevel/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/deltaThresholdLevel/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/deltaThresholdLevel/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_THRESHOLDLEVEL"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}]
 }

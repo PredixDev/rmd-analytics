@@ -1,5 +1,8 @@
 package com.ge.predix.solsvc.client;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +88,8 @@ public class RefAppAnalyticIT
     @Autowired
     private AssetConfig            assetConfig;
 
-    private List<Header>           headers;
+    private List<Header>           assetHeaders;
+    private List<Header>           timeseriesHeaders;
 
     /**
      * 
@@ -104,7 +108,7 @@ public class RefAppAnalyticIT
 
         log.debug("URL in setup ...................." + this.refappAnalyticEndpoint);
 
-        this.headers = setHeaders();
+        this.assetHeaders = setAssetHeaders();
     }
 
     /**
@@ -161,14 +165,14 @@ public class RefAppAnalyticIT
             throws IOException
     {
         createDatapoint(actualDatapoint);
-        setAlertStatus(this.headers, actualAlertStatus);
+        setAlertStatus(this.assetHeaders, actualAlertStatus);
 
         log.debug("Request........................." + analyticRequest);
 
         CloseableHttpResponse httpResponse = null;
         try
         {
-            httpResponse = this.restClient.post(this.refappAnalyticEndpoint, analyticRequest, this.headers);
+            httpResponse = this.restClient.post(this.refappAnalyticEndpoint, analyticRequest, this.assetHeaders);
 
             try
             {
@@ -180,7 +184,7 @@ public class RefAppAnalyticIT
                 log.error(e.getMessage(), e);
             }
 
-            verifyResponse(httpResponse, this.headers, actualDatapoint, !actualAlertStatus);
+            verifyResponse(httpResponse, this.assetHeaders, actualDatapoint, !actualAlertStatus);
         }
         finally
         {
@@ -190,7 +194,7 @@ public class RefAppAnalyticIT
     }
 
     @SuppressWarnings("nls")
-    private List<Header> setHeaders()
+    private List<Header> setAssetHeaders()
     {
 
         List<Header> localHeaders = this.restClient.getSecureTokenForClientId();
@@ -208,7 +212,7 @@ public class RefAppAnalyticIT
     private void setAlertStatus(List<Header> headers, Boolean status)
     {
         List<Object> models = this.modelFactory
-                .getModels("/asset/compressor-2015.tag-extensions.crank-frame-discharge-pressure", "Asset", headers);
+                .getModels("/asset/compressor-2017.alert-status.crank-frame-discharge-pressure", "Asset", headers);
 
         ((Attribute) ((Asset) models.get(0)).getAttributes().get("alertStatus")).getValue().set(0, status);
         this.modelFactory.updateModel(models.get(0), "Asset", headers);
@@ -227,7 +231,7 @@ public class RefAppAnalyticIT
         Assert.assertTrue(reply, reply.contains("errorEvent\":[]"));
 
         List<Object> models = this.modelFactory
-                .getModels("/asset/compressor-2015.tag-extensions.crank-frame-discharge-pressure", "Asset", headersArg);
+                .getModels("/asset/compressor-2017.alert-status.crank-frame-discharge-pressure", "Asset", headersArg);
 
         Assert.assertEquals(expectedAlertStatus,
                 ((Attribute) ((Asset) models.get(0)).getAttributes().get("alertStatus")).getValue().get(0));
@@ -306,7 +310,7 @@ public class RefAppAnalyticIT
         datapoints.add(datapoint1);
 
         Body body = new Body();
-        body.setName("Compressor-2015:DischargePressure");
+        body.setName("Compressor-2017:DischargePressure");
         body.setDatapoints(datapoints);
 
         List<Body> bodies = new ArrayList<Body>();
@@ -314,8 +318,49 @@ public class RefAppAnalyticIT
 
         dpIngestion.setBody(bodies);
 
-        this.timeseriesClient.createConnectionToTimeseriesWebsocket();
+        this.timeseriesClient.createTimeseriesWebsocketConnectionPool();
         this.timeseriesClient.postDataToTimeseriesWebsocket(dpIngestion);
+
+        queryForLatestDatapoints(actualValueOfSensor);
+    }
+
+    @SuppressWarnings("nls")
+    private void queryForLatestDatapoints(Integer actualValueOfSensor)
+    {
+        boolean done = false;
+        while (!done)
+        {
+            com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.DatapointsLatestQuery datapoints = new com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.DatapointsLatestQuery();
+            com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.Tag tag = new com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.Tag();
+            tag.setName("Compressor-2017:DischargePressure"); //$NON-NLS-1$
+
+            List<com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.Tag> tagList = new ArrayList<com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.Tag>();
+            tagList.add(tag);
+            datapoints.setTags(tagList);
+            this.timeseriesHeaders = this.timeseriesClient.getTimeseriesHeaders();
+            com.ge.predix.entity.timeseries.datapoints.queryresponse.DatapointsResponse response = this.timeseriesClient
+                    .queryForLatestDatapoint(datapoints, this.timeseriesHeaders);
+            assertNotNull(response);
+            try
+            {
+                assertEquals(((List<?>) response.getTags().get(0).getResults().get(0).getValues().get(0)).get(1),
+                        actualValueOfSensor);
+                done = true;
+            }
+            catch (AssertionError e)
+            {
+                try
+                {
+                    log.warn("timeseries value=" + actualValueOfSensor + " is not available yet, sleeping");
+                    Thread.sleep(3000);
+                }
+                catch (InterruptedException e1)
+                {
+                    throw new RuntimeException(e1);
+                }
+            }
+
+        }
     }
 
 }

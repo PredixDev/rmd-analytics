@@ -13,25 +13,25 @@
 			"complexType": "AssetCriteriaAwareTimeseriesFilter",
 			"assetFieldDataCriteria": {
 				"namespaces": [],
-				"resultId": "sourceTagId",
+				"resultId": "tag",
 				"fieldSelection": [{
 					"fieldIdentifier": {
 						"complexType": "FieldIdentifier",
-						"id": "/asset/assetTag/crank-frame-dischargepressure/sourceTagId",
+						"id": "/asset/assetTag/crank-frame-dischargepressure/timeseriesDatasource",
 						"source": "PREDIX_ASSET"
 					},
 					"expectedDataType": "DAString"
 				}],
 				"filter": {
 					"complexType": "AssetFilter",
-					"uri": "/asset/compressor-2015"
+					"uri": "/asset/compressor-2017"
 				}
 			},
 			"timeseriesFilter": {
 				"complexType": "TimeseriesFilter",
 				"datapointsLatestQuery": {
 					"tags": [{
-						"name": "Compressor-2015:DischargePressure"
+						"name": "Compressor-2017:DischargePressure"
 					}]
 				}
 			}

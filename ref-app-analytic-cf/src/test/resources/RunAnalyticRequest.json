@@ -8,8 +8,8 @@
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/outputMaximum",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/hiAlarmThreshold",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/hiAlarmThreshold",
 				"source": "PREDIX_ASSET"
 			},
 			"expectedDataType": "DMReal",
@@ -17,7 +17,7 @@
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -28,8 +28,8 @@
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/outputMinimum",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/outputMinimum",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/loAlarmThreshold",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/loAlarmThreshold",
 				"source": "PREDIX_ASSET"
 			},
 			"expectedDataType": "DMReal",
@@ -37,7 +37,7 @@
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -59,7 +59,7 @@
 			"complexType": "TimeseriesFilter",
 			"datapointsLatestQuery": {
 				"tags": [{
-					"name": "Compressor-2015:DischargePressure"
+					"name": "Compressor-2017:DischargePressure"
 				}]
 			}
 		}
@@ -73,15 +73,15 @@
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertStatus/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertStatus/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertStatus/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertStatus/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_STATUS"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -92,15 +92,15 @@
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertLevel/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertLevel/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertLevel/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertLevel/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_LEVEL"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -111,15 +111,15 @@
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertLevelValue/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertLevelValue/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertLevelValue/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertLevelValue/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_LEVEL_VALUE"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -130,15 +130,15 @@
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertTime/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/alertTime/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertTime/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/alertTime/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_LEVEL_VALUE_TIME"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -149,15 +149,15 @@
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/deltaThreshold/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/deltaThreshold/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/deltaThreshold/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/deltaThreshold/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_THRESHOLDDIFF"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}, {
 		"portIdentifier": {
@@ -168,15 +168,15 @@
 		"fieldSelection": {
 			"fieldIdentifier": {
 				"complexType": "FieldIdentifier",
-				"id": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/deltaThresholdLevel/value",
-				"name": "/asset/assetTag/crank-frame-dischargepressure/tagDatasource/tagExtensions/attributes/deltaThresholdLevel/value",
+				"id": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/deltaThresholdLevel/value",
+				"name": "/asset/assetTag/crank-frame-dischargepressure/alertStatusUri/attributes/deltaThresholdLevel/value",
 				"source": "PREDIX_ASSET"
 			},
 			"resultId": "ALARM_THRESHOLDLEVEL"
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2015"
+			"uri": "/asset/compressor-2017"
 		}
 	}]
 }

@@ -1,17 +1,18 @@
 applications:
-  - name: template-fdh-router-cf
+  - name: {your-name}-fdh-router-cf
     buildpack: java_buildpack
-    path: target/ref-app-analytic-cf-4.0.11.jar
+    path: target/ref-app-analytic-cf-4.0.20.jar
     memory: 512M
-    i : 2
+    i : 1
     services:
-      - unittest-uaa
+      - {uaaService}
 env:
-    predix_uaa_name: unittest-uaa
-    predix_oauth_clientId : app_client_id:secret
-    predix_fdh_restProtocol : https
-    predix_fdh_restHost : unittest-fdh-router-cf.run.aws-usw02-pr.ice.predix.io
-    predix_fdh_restPort : 443
+    # NOTE: Some values in curly braces are updated by scripts
+    predix_uaa_name: {uaaService}
+    predix_oauth_clientId: {clientId}:{secret}
+    predix_fdh_restProtocol: https
+    predix_fdh_restHost: {FDH_URL}
+    predix_fdh_restPort: 443
     #logging - see application-cloud.properties
     logging_level_root: INFO
     logging_level_org_springframework: INFO

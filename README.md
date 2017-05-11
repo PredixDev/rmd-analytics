@@ -4,8 +4,10 @@
 <a href="http://predixdev.github.io/rmd-analytics" target="_blank">
 	<img height="50px" width="100px" src="images/pages.jpg" alt="view github pages">
 </a>
+
 Analytics for Predix RMD Reference App
 =====================
+
 The right Analytic Interface can provide Algorithm portability and the flexibility to handle Data from any Datasource while empowering the developer to create analytics in any Language on any execution platform.  This value proposition is achieved by leveraging the techniques here with the power of the Predix platform.
 
 <img src=https://github.com/PredixDev/predix-rmd-ref-app/raw/master/images/RefApp-AnalyticsFlow.png/>
@@ -18,12 +20,12 @@ This project is a template for the 2nd type; a custom Analytic where you need co
 
 The Reference App helps you define a commmon API and lifecycle allowing the analytic to run in any language, on any operating system, against near-data, distributed data or cloud-based data sources.  The design is portable and can be taken to the edge on Predix Machine.  
 
-##Orchestrated Analytics
+## Orchestrated Analytics
 <img src="images/simple_orchestration.png">
 
 The Predix orchestration engine invokes each analytic in a workflow.  The workflow can be complex with forks and joins.
 
-##Individual Analytic Lifecycle
+## Individual Analytic Lifecycle
 The Analytic resolves the data, performs the calculation and then stores or caches the data.  Data resolution and storage is managed by the [Federated Data Handler](https://github.com/PredixDev/fdh-router-service) allowing any datastore to be accessed.
 
 <img src="images/analytic-lifecycle.png">
@@ -51,7 +53,7 @@ Here is the same structure in a picture. (defined by an xsd)
 
 Defining other ports is easy because it's just a name and an expectedDataType.  
 
-##Data
+## Data
 
 The most common data structures are Real, Int, Boolean, String, Timeseries, but any Data Type can be defined.  We recommend updating only single attributes within a larger structure.  This allows long-running algorithms to not update stale data.  (future) We recommend an optimistic locking technique be employed as a best-practice.
 
@@ -64,12 +66,12 @@ We also wrap the OSACBM (Open Standards Association for Condition Based Maintena
 <img height=300 src="/images/DataExchange-OsacbmDataTypes.png">
 
 
-##Analytic Template
+## Analytic Template
 Many Analytics are reusable, so the Template definition of Port Name, Expected DataType and Expected EngineeringUnit (celcius, fahrenheit, etc) define what the analytic wants.  The data resolved by the Analytic could be from a variety of data sources (customer specific datasources, files, hadoop, rdbms, cache, Asset, Timeseries, etc).  
 
 >This technique of defining the Analytic Template, configuring the DataBinding and Filter where clauses and doing late data-binding at runtime allow the Analytics, and the tooling to support this, to apply to any execution runtime against any datasource.  
 
-##DataBinding to the FieldSelection
+## DataBinding to the FieldSelection
 When we assign a Field and Filter to the Port we call this Data Binding.  It simply means we are defining which Attribute from which Datasource and which Where clause to use at runtime.  Each Port for the analytic usually has different where clause semantics relative to the problem at hand.
 
 The FieldIdentifer has an id, name, and source.  The id is a Rest principle based string indicating where to find the Real, Int, String, Bool, or Timeseries attribute within a datasource.
@@ -108,7 +110,7 @@ The Selection Filter is a where clause which also has Animal, Cat, Dog polymorph
 <img src="images/predix-time-selection-filter.png">
 <img src="images/field-selection-filter.png">
 
-##Traversing the Model
+## Traversing the Model
 
 Field definitions represent data and are influenced by Predix Asset JSON models.  It turns out that all json structures when unmarshaled to objects are primitives, objects, maps or lists.  Say, we search for an Asset trying to retrieve the hiAlarmThreshold attribute.  The items in-between are a traversal of the Asset object-graph json.  Predix Asset supports any 'model' json structure.  In this case the model is an Asset.  But it could be /plane/wingspan or /address/city.  
 
@@ -116,7 +118,7 @@ Our implementation uses standard json libraries to find the attribute within the
 
 <img src="images/model_attribute.png">
 
-##Summary
+## Summary
 To summarize, starting with an AnalyticTemplate defining a Port name, datatype and engineering unit, we can bind a Field and Data Source to it and define a Filter where clause.  When a RunAnalyticRequest is made the Analytic Resolves the data, computes a result and Stores/Caches the result using an OutputPort definition and 'Data', which also has Polymormic semantics.  [Federated Data Handler](https://github.com/PredixDev/fdh-router-service) manages the Data Resolution and Storage/Cache requests.  Control is returned to the Orchestration Engine and the next Analytic is invoked.
 
 <img src="images/port.png">
@@ -331,13 +333,13 @@ You can find a sample orchestration BPMN file, as well as a complete JSON reques
 
 
 
-##Tech Stack
+## Tech Stack
 - Spring
 - SpringBoot
 - SpringTest
 - Maven
 
-##Microcomponents
+## Microcomponents
 - [AssetBootstrap](https://github.com/predixdev/asset-bootstrap)
 - [TimeseriesBootstrap](https://github.com/predixdev/timeseries-bootstrap)
 - [PredixMicroserviceTemplates](https://github.com/predixdev/predix-microservice-templates)

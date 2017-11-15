@@ -1,7 +1,7 @@
 applications:
   - name: {your-name}-fdh-router-cf
     buildpack: java_buildpack
-    path: target/ref-app-analytic-cf-4.0.39.jar
+    path: target/ref-app-analytic-cf-4.0.42.jar
     memory: 512M
     i : 1
     services:

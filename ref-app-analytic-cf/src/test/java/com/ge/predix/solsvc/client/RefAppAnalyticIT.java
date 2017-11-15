@@ -36,6 +36,7 @@ import com.ge.predix.entity.timeseries.datapoints.ingestionrequest.DatapointsIng
 import com.ge.predix.solsvc.bootstrap.ams.common.AssetConfig;
 import com.ge.predix.solsvc.bootstrap.ams.dto.Attribute;
 import com.ge.predix.solsvc.bootstrap.ams.factories.ModelFactory;
+import com.ge.predix.solsvc.bootstrap.ams.factories.ModelFactoryImpl;
 import com.ge.predix.solsvc.fdh.handler.timeseries.TimeseriesGetDataHandler;
 import com.ge.predix.solsvc.fdh.router.boot.FdhRouterApplication;
 import com.ge.predix.solsvc.refappanalytic.boot.RefAppAnalyticApplication;
@@ -83,7 +84,8 @@ public class RefAppAnalyticIT
     private String                 refappAnalyticEndpoint;
 
     @Autowired
-    private ModelFactory           modelFactory;
+    @Qualifier("ModelFactory")
+    private ModelFactoryImpl           modelFactory;
 
     @Autowired
     private AssetConfig            assetConfig;

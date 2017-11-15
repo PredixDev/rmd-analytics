@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>ref-app-analytic-cf</artifactId>
-	<version>4.0.39</version>
+	<version>4.0.42</version>
 	<packaging>jar</packaging>
 
 	<description>Calculate asset health levels </description>
@@ -19,11 +19,11 @@
 	</parent>
 
 	<properties>
-		<ext-model.version>2.3.4</ext-model.version>
-		<ext-util.version>2.3.4</ext-util.version>
-		<predix-rest-client.version>2.3.4</predix-rest-client.version>
-		<fdh-bootstrap-client.version>2.0.29</fdh-bootstrap-client.version>
-		<data-exchange.version>2.0.39</data-exchange.version>
+		<ext-model.version>2.3.5</ext-model.version>
+		<ext-util.version>2.3.5</ext-util.version>
+		<predix-rest-client.version>2.3.5</predix-rest-client.version>
+		<fdh-bootstrap-client.version>2.0.32</fdh-bootstrap-client.version>
+		<data-exchange.version>2.0.43</data-exchange.version>
 
 		<commons-io.version>1.4</commons-io.version>
 		<jackson-databind.version>2.4.5</jackson-databind.version>
@@ -37,7 +37,7 @@
 		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
 
 		<!-- test dependencies -->
-		<fdh-timeseries-handler.version>2.0.29</fdh-timeseries-handler.version>
+		<fdh-timeseries-handler.version>2.0.32</fdh-timeseries-handler.version>
 	</properties>
 
 	<dependencies>

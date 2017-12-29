@@ -35,8 +35,7 @@ import com.ge.predix.entity.timeseries.datapoints.ingestionrequest.Body;
 import com.ge.predix.entity.timeseries.datapoints.ingestionrequest.DatapointsIngestion;
 import com.ge.predix.solsvc.bootstrap.ams.common.AssetConfig;
 import com.ge.predix.solsvc.bootstrap.ams.dto.Attribute;
-import com.ge.predix.solsvc.bootstrap.ams.factories.ModelFactory;
-import com.ge.predix.solsvc.bootstrap.ams.factories.ModelFactoryImpl;
+import com.ge.predix.solsvc.bootstrap.ams.factories.AssetClientImpl;
 import com.ge.predix.solsvc.fdh.handler.timeseries.TimeseriesGetDataHandler;
 import com.ge.predix.solsvc.fdh.router.boot.FdhRouterApplication;
 import com.ge.predix.solsvc.refappanalytic.boot.RefAppAnalyticApplication;
@@ -84,8 +83,8 @@ public class RefAppAnalyticIT
     private String                 refappAnalyticEndpoint;
 
     @Autowired
-    @Qualifier("ModelFactory")
-    private ModelFactoryImpl           modelFactory;
+    @Qualifier("AssetClient")
+    private AssetClientImpl           assetClient;
 
     @Autowired
     private AssetConfig            assetConfig;
@@ -125,8 +124,9 @@ public class RefAppAnalyticIT
     {
         log.debug("=======TEST WITH KNOWN SENSOR TAG NAME ================");
 
-        testAnalytics(2, true, getRunAnalyticRequestSimpleTestDataFromFile());
-        testAnalytics(29, false, getRunAnalyticRequestSimpleTestDataFromFile());
+        String tagName = "Compressor-2017:DischargePressure";
+		testAnalytics(tagName , 2, true, getRunAnalyticRequestSimpleTestDataFromFile());
+        testAnalytics(tagName, 29, false, getRunAnalyticRequestSimpleTestDataFromFile());
     }
 
     /**
@@ -141,7 +141,8 @@ public class RefAppAnalyticIT
     {
         log.debug("=======TEST LOOKING UP SENSOR TAG NAME IN PREDIX ASSET ================");
 
-        testAnalytics(12, true, getRunAnalyticRequestVariableTestDataFromFile());
+        String tagName = "Compressor-2017:DischargePressure";
+		testAnalytics(tagName ,12, true, getRunAnalyticRequestVariableTestDataFromFile());
         // testAnalytics(48, false, getRunAnalyticRequestVariableTestDataFromFile());
     }
 
@@ -158,15 +159,16 @@ public class RefAppAnalyticIT
         log.debug(
                 "=======TEST LOOKUP SENSOR TAG IN PREDIX ASSET SENSOR=====but unknown sensor variable has illegal characters due to Analytics Runtime Bug ===========");
 
-        testAnalytics(23, false, getRunAnalyticRequestVariableTestDataFromFile1());
-        testAnalytics(22, true, getRunAnalyticRequestVariableTestDataFromFile1());
+        String tagName = "Compressor-2017:DischargePressure";
+		testAnalytics(tagName , 23, false, getRunAnalyticRequestVariableTestDataFromFile1());
+        testAnalytics(tagName, 22, true, getRunAnalyticRequestVariableTestDataFromFile1());
     }
 
     @SuppressWarnings("nls")
-    private void testAnalytics(Integer actualDatapoint, Boolean actualAlertStatus, String analyticRequest)
+    private void testAnalytics(String tagName, Integer actualDatapoint, Boolean actualAlertStatus, String analyticRequest)
             throws IOException
     {
-        createDatapoint(actualDatapoint);
+        createDatapoint(tagName, actualDatapoint);
         setAlertStatus(this.assetHeaders, actualAlertStatus);
 
         log.debug("Request........................." + analyticRequest);
@@ -195,7 +197,8 @@ public class RefAppAnalyticIT
 
     }
 
-    @SuppressWarnings("nls")
+
+	@SuppressWarnings("nls")
     private List<Header> setAssetHeaders()
     {
 
@@ -213,11 +216,11 @@ public class RefAppAnalyticIT
     @SuppressWarnings("nls")
     private void setAlertStatus(List<Header> headers, Boolean status)
     {
-        List<Object> models = this.modelFactory
+        List<Object> models = this.assetClient
                 .getModels("/asset/compressor-2017.alert-status.crank-frame-discharge-pressure", "Asset", headers);
 
         ((Attribute) ((Asset) models.get(0)).getAttributes().get("alertStatus")).getValue().set(0, status);
-        this.modelFactory.updateModel(models.get(0), "Asset", headers);
+        this.assetClient.updateModel(models.get(0), "Asset", headers);
     }
 
     @SuppressWarnings("nls")
@@ -232,7 +235,7 @@ public class RefAppAnalyticIT
         Assert.assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
         Assert.assertTrue(reply, reply.contains("errorEvent\":[]"));
 
-        List<Object> models = this.modelFactory
+        List<Object> models = this.assetClient
                 .getModels("/asset/compressor-2017.alert-status.crank-frame-discharge-pressure", "Asset", headersArg);
 
         Assert.assertEquals(expectedAlertStatus,
@@ -298,7 +301,7 @@ public class RefAppAnalyticIT
     }
 
     @SuppressWarnings("nls")
-    private void createDatapoint(Integer actualValueOfSensor)
+    private void createDatapoint(String tagName, Integer actualValueOfSensor)
     {
         DatapointsIngestion dpIngestion = new DatapointsIngestion();
         dpIngestion.setMessageId(String.valueOf(System.currentTimeMillis()));
@@ -312,7 +315,7 @@ public class RefAppAnalyticIT
         datapoints.add(datapoint1);
 
         Body body = new Body();
-        body.setName("Compressor-2017:DischargePressure");
+        body.setName(tagName);
         body.setDatapoints(datapoints);
 
         List<Body> bodies = new ArrayList<Body>();
@@ -323,18 +326,18 @@ public class RefAppAnalyticIT
         this.timeseriesClient.createTimeseriesWebsocketConnectionPool();
         this.timeseriesClient.postDataToTimeseriesWebsocket(dpIngestion);
 
-        queryForLatestDatapoints(actualValueOfSensor);
+        queryForLatestDatapoints(tagName, actualValueOfSensor);
     }
 
     @SuppressWarnings("nls")
-    private void queryForLatestDatapoints(Integer actualValueOfSensor)
+    private void queryForLatestDatapoints(String tagName, Integer actualValueOfSensor)
     {
         boolean done = false;
         while (!done)
         {
             com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.DatapointsLatestQuery datapoints = new com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.DatapointsLatestQuery();
             com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.Tag tag = new com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.Tag();
-            tag.setName("Compressor-2017:DischargePressure"); //$NON-NLS-1$
+            tag.setName(tagName); //$NON-NLS-1$
 
             List<com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.Tag> tagList = new ArrayList<com.ge.predix.entity.timeseries.datapoints.queryrequest.latest.Tag>();
             tagList.add(tag);

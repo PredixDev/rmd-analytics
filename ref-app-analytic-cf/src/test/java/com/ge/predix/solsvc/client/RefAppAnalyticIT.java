@@ -60,7 +60,7 @@ import com.ge.predix.solsvc.timeseries.bootstrap.client.TimeseriesClient;
  */
 @ActiveProfiles(
 {
-        "local", "timeseries"
+        "local", "asset", "timeseries"
 })
 @IntegrationTest(
 {
@@ -358,6 +358,7 @@ public class RefAppAnalyticIT
                 {
                     log.warn("timeseries value=" + actualValueOfSensor + " is not available yet, sleeping");
                     Thread.sleep(3000);
+                    createDatapoint(tagName, actualValueOfSensor);
                 }
                 catch (InterruptedException e1)
                 {

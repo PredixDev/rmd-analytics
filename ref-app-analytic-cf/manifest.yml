@@ -1,7 +1,7 @@
 applications:
   - name: {your-name}-fdh-router-cf
     buildpack: java_buildpack
-    path: target/ref-app-analytic-cf-4.0.44.jar
+    path: target/ref-app-analytic-cf-4.0.47.jar
     memory: 512M
     i : 1
     services:
@@ -10,9 +10,7 @@ env:
     # NOTE: Some values in curly braces are updated by scripts
     predix_uaa_name: {uaaService}
     predix_oauth_clientId: {clientId}:{secret}
-    predix_fdh_restProtocol: https
-    predix_fdh_restHost: {FDH_URL}
-    predix_fdh_restPort: 443
+    predix_dataexchange_restHost: {FDH_URL}
     #logging - see application-cloud.properties
     logging_level_root: INFO
     logging_level_org_springframework: INFO

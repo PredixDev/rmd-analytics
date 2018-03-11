@@ -97,6 +97,7 @@ public class RefAppAnalytic implements IRefAppAnalytic {
 		// Resolve the Data - the RunAnalyticRequest contains Filters
 		// for various situations (pullData(cloud,db), nearData(hadoop,etc),
 		// distributedData, localData)
+		
 		Map<String, FieldData> inputMap = resolveData(request, headers);
 
 		// calculate
@@ -118,6 +119,8 @@ public class RefAppAnalytic implements IRefAppAnalytic {
 	@SuppressWarnings("nls")
 	private RunAnalyticResult storeData(RunAnalyticRequest request, List<Header> headers,
 			Map<String, FieldData> calculatedOutputMap) {
+		log.info("\n\nStore Data =============================================================================================\n");
+
 		log.info("Put Field Data ===>Request URL........................."
 				+ this.fdhRestConfig.getPutFieldDataEndPoint());
 		String putRequest = this.jsonMapper.toJson(constructPutFieldDataRequest(request, calculatedOutputMap));
@@ -146,6 +149,8 @@ public class RefAppAnalytic implements IRefAppAnalytic {
 
 				response.getOutputPort().add(outputPort);
 			}
+			log.info("\n\nStore Data Complete =============================================================================================\n");
+
 			return response;
 		} finally {
 			if (putResponse != null)
@@ -164,6 +169,7 @@ public class RefAppAnalytic implements IRefAppAnalytic {
 	 */
 	@SuppressWarnings("nls")
 	private Map<String, FieldData> resolveData(RunAnalyticRequest request, List<Header> headers) {
+		log.info("\n\nResolve Data =============================================================================================\n");
 		// prepare request
 		GetFieldDataRequest getFieldDataRequest = getFieldDataRequest(request);
 		String getRequest1 = this.jsonMapper.toJson(getFieldDataRequest);
@@ -188,6 +194,7 @@ public class RefAppAnalytic implements IRefAppAnalytic {
 			for (FieldData fieldData : getResult.getFieldData()) {
 				inputMap.put(fieldData.getResultId(), fieldData);
 			}
+			log.info("\n\nResolve Data Complete =============================================================================================\n");
 			return inputMap;
 		} finally {
 			if (getFieldDataResponse != null)
@@ -197,6 +204,7 @@ public class RefAppAnalytic implements IRefAppAnalytic {
 					throw new RuntimeException(e);
 				}
 		}
+
 	}
 
 	private Map<String, FieldData> callAnalytic(RunAnalyticRequest serviceRequest, Map<String, FieldData> inputMap) {

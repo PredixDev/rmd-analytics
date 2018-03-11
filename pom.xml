@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>ref-app-analytics</artifactId>
-	<version>4.0.47</version>
+	<version>4.0.56</version>
 	<packaging>pom</packaging>
 
 	<name>ref-app-analytics</name>

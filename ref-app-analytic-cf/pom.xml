@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>ref-app-analytic-cf</artifactId>
-	<version>4.0.47</version>
+	<version>4.0.56</version>
 	<packaging>jar</packaging>
 
 	<description>Calculate asset health levels </description>
@@ -19,11 +19,10 @@
 	</parent>
 
 	<properties>
-		<ext-model.version>2.3.8</ext-model.version>
-		<ext-util.version>2.3.8</ext-util.version>
-		<predix-rest-client.version>2.3.8</predix-rest-client.version>
-		<data-exchange-client.version>2.0.35</data-exchange-client.version>
-		<data-exchange.version>2.0.47</data-exchange.version>
+		<ext-model.version>2.3.56</ext-model.version>
+		<ext-util.version>2.3.56</ext-util.version>
+		<predix-rest-client.version>2.3.77</predix-rest-client.version>
+		<data-exchange-client.version>2.0.62</data-exchange-client.version>
 
 		<commons-io.version>1.4</commons-io.version>
 		<jackson-databind.version>2.4.5</jackson-databind.version>
@@ -37,7 +36,7 @@
 		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
 
 		<!-- test dependencies -->
-		<fdh-timeseries-handler.version>2.0.35</fdh-timeseries-handler.version>
+		<data-exchange.version>2.0.71</data-exchange.version>
 	</properties>
 
 	<dependencies>
@@ -61,8 +60,14 @@
 			<artifactId>predix-rest-client</artifactId>
 			<version>${predix-rest-client.version}</version>
 			<exclusions>
+				<!-- <groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-databind</artifactId> -->
 				<exclusion>
-					<!-- <groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-databind</artifactId> -->
+					<groupId>dependencies.dependency.exclusions.exclusion</groupId>
+					<artifactId>groupId</artifactId>
+					</exclusion>
+				<exclusion>
+					<groupId>dependencies.dependency.exclusions.exclusion</groupId>
+					<artifactId>artifactId</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -119,12 +124,6 @@
 		</dependency>
 
 		<!-- test dependencies -->
-		<dependency>
-			<groupId>com.ge.predix.solsvc</groupId>
-			<artifactId>fdh-timeseries-handler</artifactId>
-			<version>${fdh-timeseries-handler.version}</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.ge.predix.solsvc</groupId>
 			<artifactId>data-exchange</artifactId>

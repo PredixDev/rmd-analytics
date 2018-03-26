@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>ref-app-analytic-cf</artifactId>
-	<version>4.0.60</version>
+	<version>4.0.62</version>
 	<packaging>jar</packaging>
 
 	<description>Calculate asset health levels </description>
@@ -19,10 +19,10 @@
 	</parent>
 
 	<properties>
-		<ext-model.version>2.3.57</ext-model.version>
-		<ext-util.version>2.3.57</ext-util.version>
-		<predix-rest-client.version>2.3.78</predix-rest-client.version>
-		<data-exchange-client.version>2.0.64</data-exchange-client.version>
+		<ext-model.version>2.4.4</ext-model.version>
+		<ext-util.version>2.4.4</ext-util.version>
+		<predix-rest-client.version>2.3.86</predix-rest-client.version>
+		<data-exchange-client.version>2.0.72</data-exchange-client.version>
 
 		<commons-io.version>1.4</commons-io.version>
 		<jackson-databind.version>2.4.5</jackson-databind.version>
@@ -36,7 +36,7 @@
 		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
 
 		<!-- test dependencies -->
-		<data-exchange.version>2.0.73</data-exchange.version>
+		<data-exchange.version>2.0.81</data-exchange.version>
 	</properties>
 
 	<dependencies>

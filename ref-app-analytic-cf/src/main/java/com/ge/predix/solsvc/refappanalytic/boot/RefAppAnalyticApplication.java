@@ -24,13 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Configuration
 @ComponentScan(
 {
-    "com.ge.predix.solsvc.refappanalytic.service", "com.ge.predix.solsvc.refappanalytic.analytic",
-    "com.ge.predix.solsvc.timeseries", "com.ge.predix.solsvc.websocket"
+    "com.ge.predix.solsvc.refappanalytic.service", "com.ge.predix.solsvc.refappanalytic.analytic"
 })
 @ImportResource(
 {
-    "classpath:/META-INF/spring/predix-rest-client-scan-context.xml",
-    "classpath:/META-INF/spring/ext-util-scan-context.xml",
     "classpath:/META-INF/spring/fdh-bootstrap-client-scan-context.xml"
 })
 @PropertySource("classpath:application-default.properties")

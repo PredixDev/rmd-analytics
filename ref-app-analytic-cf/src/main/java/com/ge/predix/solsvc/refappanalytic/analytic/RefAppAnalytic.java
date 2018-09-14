@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -51,13 +52,18 @@ import com.ge.predix.solsvc.restclient.impl.RestClient;
  * @author predix -
  */
 @Component
+@ImportResource(
+{
+    "classpath:/META-INF/spring/predix-rest-client-scan-context.xml",
+    "classpath:/META-INF/spring/ext-util-scan-context.xml"
+})
 public class RefAppAnalytic implements IRefAppAnalytic {
 
 	private static final Logger log = LoggerFactory.getLogger(RefAppAnalytic.class.getName());
 
 	@Autowired
 	@Qualifier("restClient")
-	private RestClient restClient;
+	private RestClient restClient; //TODO change to data-exchange-client
 
 	@Autowired
 	@Qualifier("defaultOauthRestConfig")
@@ -103,8 +109,8 @@ public class RefAppAnalytic implements IRefAppAnalytic {
 		// calculate
 		Map<String, FieldData> calculatedOutputMap = callAnalytic(request, inputMap);
 
-		// FDH PutFieldData - the RunAnalyticRequest contains Filters
-		// for the outputs. potential to cache data using a FDH CacheHandler
+		// DataExchange PutFieldData - the RunAnalyticRequest contains Filters
+		// for the outputs. potential to cache data using a DataExchange CacheHandler
 		RunAnalyticResult response = storeData(request, headers, calculatedOutputMap);
 
 		return response;
@@ -177,7 +183,7 @@ public class RefAppAnalytic implements IRefAppAnalytic {
 
 		String getRequest = getRequest1.replaceAll("<!-- -->", "");
 
-		// call FDH.GetFieldData
+		// call DataExchange.GetFieldData
 		log.info("Get Field Data ===>Request URL........................."
 				+ this.fdhRestConfig.getGetFieldDataEndPoint());
 		CloseableHttpResponse getFieldDataResponse = null;

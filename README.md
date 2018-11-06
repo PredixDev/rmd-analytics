@@ -144,7 +144,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2017"
+			"uri": "/asset/Compressor-CMMS-Compressor-2018"
 		}
 	}, {
 		"portIdentifier": {
@@ -164,7 +164,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2017"
+			"uri": "/asset/Compressor-CMMS-Compressor-2018"
 		}
 	}, {
 		"portIdentifier": {
@@ -197,7 +197,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 				}],
 				"filter": {
 					"complexType": "AssetFilter",
-					"uri": "/asset/compressor-2017"
+					"uri": "/asset/Compressor-CMMS-Compressor-2018"
 				}
 			},
 			"timeseriesFilter": {
@@ -227,7 +227,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2017"
+			"uri": "/asset/Compressor-CMMS-Compressor-2018"
 		}
 	}, {
 		"portIdentifier": {
@@ -246,7 +246,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2017"
+			"uri": "/asset/Compressor-CMMS-Compressor-2018"
 		}
 	}, {
 		"portIdentifier": {
@@ -265,7 +265,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2017"
+			"uri": "/asset/Compressor-CMMS-Compressor-2018"
 		}
 	}, {
 		"portIdentifier": {
@@ -284,7 +284,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2017"
+			"uri": "/asset/Compressor-CMMS-Compressor-2018"
 		}
 	}, {
 		"portIdentifier": {
@@ -303,7 +303,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2017"
+			"uri": "/asset/Compressor-CMMS-Compressor-2018"
 		}
 	}, {
 		"portIdentifier": {
@@ -322,7 +322,7 @@ Here are 3 input ports defined for the Alarm Threshold Analytic used by the Refe
 		},
 		"filter": {
 			"complexType": "AssetFilter",
-			"uri": "/asset/compressor-2017"
+			"uri": "/asset/Compressor-CMMS-Compressor-2018"
 		}
 	}]
 }

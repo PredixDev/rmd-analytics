@@ -24,14 +24,14 @@
 				}],
 				"filter": {
 					"complexType": "AssetFilter",
-					"uri": "/asset/compressor-2017"
+					"uri": "/asset/Compressor-CMMS-Compressor-2018"
 				}
 			},
 			"timeseriesFilter": {
 				"complexType": "TimeseriesFilter",
 				"datapointsLatestQuery": {
 					"tags": [{
-						"name": "Compressor-2017:DischargePressure"
+						"name": "Compressor-CMMS-Compressor-2018:DischargePressure"
 					}]
 				}
 			}
